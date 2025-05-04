@@ -11,8 +11,8 @@ AESD_ASSIGNMENTS_VERSION = 10392fa97ff7abc837ba1e8c4e76d65e2de37746
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
-AESD_ASSIGNMENTS_SITE = https://github.com/cu-ecen-aeld/assignments-3-and-later-Sanal-11.git
-#AESD_ASSIGNMENTS_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-Sanal-11.git
+# AESD_ASSIGNMENTS_SITE = https://github.com/cu-ecen-aeld/assignments-3-and-later-Sanal-11.git
+AESD_ASSIGNMENTS_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-Sanal-11.git
 AESD_ASSIGNMENTS_SITE_METHOD = git
 # AESD_ASSIGNMENTS_SITE = /home/win/workspace/coursera/assignment-1-Sanal-11
 # AESD_ASSIGNMENTS_SITE_METHOD = local

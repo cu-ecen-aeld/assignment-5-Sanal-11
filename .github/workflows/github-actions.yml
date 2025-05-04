@@ -17,6 +17,10 @@ jobs:
           - uses: webfactory/ssh-agent@v0.5.3
             with:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - name: Force SSH to use port 443 for GitHub
+            run: |
+                  mkdir -p ~/.ssh
+                  echo -e "Host github.com\n  Hostname ssh.github.com\n  Port 443" >> ~/.ssh/config
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"

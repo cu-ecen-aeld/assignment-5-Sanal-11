@@ -17,6 +17,8 @@ jobs:
           - uses: webfactory/ssh-agent@v0.5.3
             with:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - name: Set SSH over port 443
+            run: echo "GIT_SSH_COMMAND='ssh -o Port=443 -o Hostname=ssh.github.com'" >> $GITHUB_ENV
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"

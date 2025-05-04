@@ -7,7 +7,7 @@
 $(info ==== aesd-assignments.mk IS PARSED ====)
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-AESD_ASSIGNMENTS_VERSION = e687e3815f76c1c5ea9fb52b6558bedfe53ab117
+AESD_ASSIGNMENTS_VERSION = 91c9bd31993f87eab266846655f19210784d0e33
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:

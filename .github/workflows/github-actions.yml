@@ -19,6 +19,10 @@ jobs:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: Set SSH over port 443
             run: echo "GIT_SSH_COMMAND='ssh -o Port=443 -o Hostname=ssh.github.com'" >> $GITHUB_ENV
+          - name: List Buildroot Git cache
+            run: |
+                echo "HOME is $HOME"
+                ls -laR /github/home/.dl || echo "No .dl folder found"
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"

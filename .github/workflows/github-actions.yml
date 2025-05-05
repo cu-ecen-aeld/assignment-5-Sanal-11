@@ -19,7 +19,7 @@ jobs:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
           - name: Test SSH connectivity
-            run: ssh -T git@github.com || echo "SSH failed"
+            run: ssh -T -p 443 git@github.com || echo "SSH failed"
 
           - name: Run full test
             env:

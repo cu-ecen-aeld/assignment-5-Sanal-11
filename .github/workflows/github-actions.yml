@@ -9,18 +9,14 @@ jobs:
     full-test:
         container: cuaesd/aesd-autotest:24-assignment4-buildroot
         runs-on: self-hosted
-        timeout-minutes: 350
+        timeout-minutes: 120
         steps:
           - uses: actions/checkout@v2
           - name: Checkout submodules
             run: git submodule update --init --recursive
           - uses: webfactory/ssh-agent@v0.5.3
-          - name: Set SSH over port 443
-            run: echo "GIT_SSH_COMMAND='ssh -o Port=443 -o Hostname=ssh.github.com'" >> $GITHUB_ENV
-          - name: List Buildroot Git cache
-            run: |
-                echo "HOME is $HOME"
-                ls -laR /github/home/.dl || echo "No .dl folder found"
+            with:
+                ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"

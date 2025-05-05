@@ -22,6 +22,8 @@ jobs:
             run: ssh -T -p 443 git@github.com || echo "SSH failed"
           - name: Print the fingerprint of the SSH key
             run: |
+              echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+              chmod 600 ~/.ssh/id_rsa
               # Print the fingerprint of the private key for verification (not the key itself)
               ssh-keygen -lf ~/.ssh/id_rsa
           - name: Run full test

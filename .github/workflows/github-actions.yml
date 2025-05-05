@@ -14,21 +14,13 @@ jobs:
           - uses: actions/checkout@v2
           - name: Checkout submodules
             run: git submodule update --init --recursive
-          - uses: webfactory/ssh-agent@v0.5.3
-            with:
-                ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-          - name: Test SSH connectivity
-            run: ssh -T -p 443 git@github.com || echo "SSH failed"
-          - name: Print the fingerprint of the SSH key
-            run: |
-              echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-              chmod 600 ~/.ssh/id_rsa
-              # Print the fingerprint of the private key for verification (not the key itself)
-              ssh-keygen -lf ~/.ssh/id_rsa
-          - name: Run full test
+          - name: Set up Git to use PAT for GitHub
             env:
-              GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+             GH_PAT: ${{ secrets.GH_PAT }}
+
+            run: |
+             git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "https://github.com/"
+          - name: Run full test
             run: ./full-test.sh
           - name: Cleanup
             if: always()

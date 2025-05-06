@@ -9,18 +9,28 @@ jobs:
     full-test:
         container: cuaesd/aesd-autotest:24-assignment4-buildroot
         runs-on: self-hosted
-        timeout-minutes: 120
+        timeout-minutes: 350
         steps:
           - uses: actions/checkout@v2
           - name: Checkout submodules
             run: git submodule update --init --recursive
-          - name: Set up Git to use PAT for GitHub
-            env:
-             GH_PAT: ${{ secrets.GH_PAT }}
-
+          - uses: webfactory/ssh-agent@v0.5.3
+          - name: Add SSH key
             run: |
-             git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "https://github.com/"
+              mkdir -p ~/.ssh
+              echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+              chmod 600 ~/.ssh/id_rsa
+              ssh-keyscan github.com >> ~/.ssh/known_hosts
+            shell: bash
+          - name: Set SSH over port 443
+            run: echo "GIT_SSH_COMMAND='ssh -o Port=443 -o Hostname=ssh.github.com'" >> $GITHUB_ENV
+          - name: List Buildroot Git cache
+            run: |
+                echo "HOME is $HOME"
+                ls -laR /github/home/.dl || echo "No .dl folder found"
           - name: Run full test
+            env:
+              GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: ./full-test.sh
           - name: Cleanup
             if: always()

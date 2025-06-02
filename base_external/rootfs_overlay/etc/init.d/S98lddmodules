@@ -6,6 +6,7 @@ case "$1" in
     echo "Loading scull module"
     /usr/bin/scull_load
     /usr/bin/module_load faulty
+    /usr/bin/module_load hello
     echo "load hello module"
     modprobe hello
     ;;

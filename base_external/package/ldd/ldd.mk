@@ -7,15 +7,15 @@
 $(info ==== ldd.mk IS PARSED ====)
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-LDD_VERSION = 43b0eb80d7c617ac810838f9fb93ac76c638643b
+LDD_VERSION = bc8f49febdb3aa1fc91e5a9d2b11941a0835d3b6
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
-# LDD_SITE = git@github.com:cu-ecen-aeld/assignment-7-Sanal-11.git
-# LDD_SITE_METHOD = git
-LDD_SITE = ~/workspace/coursera/assignment-7-Sanal-11 
-LDD_SITE_METHOD = local
-# LDD_GIT_SUBMODULES = YES
+LDD_SITE = git@github.com:cu-ecen-aeld/assignment-7-Sanal-11.git
+LDD_SITE_METHOD = git
+# LDD_SITE = ~/workspace/coursera/assignment-7-Sanal-11 
+# LDD_SITE_METHOD = local
+LDD_GIT_SUBMODULES = YES
 
 MODULE_SUBDIRS = misc-modules scull
 

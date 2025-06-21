@@ -7,15 +7,15 @@
 $(info ==== aesdchar-dd.mk IS PARSED ====)
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-#AESDCHAR_DD_VERSION = d68a72b011f6ddb93c29c96976d10f24c45fabe4
+AESDCHAR_DD_VERSION = 92a8b75f9570d6d8da9cb0f80a920a34b3c53c42
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
-#AESDCHAR_DD_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-Sanal-11.git
-#AESDCHAR_DD_SITE_METHOD = git
-#AESDCHAR_DD_GIT_SUBMODULES = YES
-AESDCHAR_DD_SITE = /home/win/workspace/coursera/assignments-3-and-later-Sanal-11
-AESDCHAR_DD_SITE_METHOD = local
+AESDCHAR_DD_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-Sanal-11.git
+AESDCHAR_DD_SITE_METHOD = git
+AESDCHAR_DD_GIT_SUBMODULES = YES
+# AESDCHAR_DD_SITE = /home/win/workspace/coursera/assignments-3-and-later-Sanal-11
+# AESDCHAR_DD_SITE_METHOD = local
 
 MODULE_SUBDIRS = aesd-char-driver
 

@@ -20,10 +20,6 @@ LDD_GIT_SUBMODULES = YES
 MODULE_SUBDIRS = misc-modules scull
 
 define LDD_BUILD_CMDS
-	# $(MAKE) -C $(LINUX_DIR) -C $(@D)/misc-modules modules
-	# $(MAKE) -C $(LINUX_DIR)  -C $(@D)/scull modules
-	# $(MAKE) -C $(LINUX_DIR) ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(TARGET_CROSS) M=$(@D)/misc-modules modules
-	# $(MAKE) -C $(LINUX_DIR) ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(TARGET_CROSS) M=$(@D)/scull modules
 	$(MAKE) -C $(LINUX_DIR) \
 	    ARCH=$(KERNEL_ARCH) \
 	    CROSS_COMPILE=$(TARGET_CROSS) \
@@ -42,10 +38,9 @@ endef
 
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
 define LDD_INSTALL_TARGET_CMDS
-
 	# Install .ko kernel modules
-	$(INSTALL) -D -m 0644 $(@D)/misc-modules/*.ko $(TARGET_DIR)/lib/modules/
-	$(INSTALL) -D -m 0644 $(@D)/scull/*.ko $(TARGET_DIR)/lib/modules/
+	$(INSTALL) -D -m 0644 $(@D)/misc-modules/*.ko $(TARGET_DIR)/lib/modules/$(LINUX_VERSION_PROBED)
+	$(INSTALL) -D -m 0644 $(@D)/scull/*.ko $(TARGET_DIR)/lib/modules/$(LINUX_VERSION_PROBED)
 
 	$(INSTALL) -m 0755 $(@D)/misc-modules/module_load $(TARGET_DIR)/usr/bin
 	$(INSTALL) -m 0755 $(@D)/misc-modules/module_unload $(TARGET_DIR)/usr/bin

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_AESDCHAR_DD
+	bool "aesdchar-dd"
+	help
+		Includes the char device driver.
